@@ -1,4 +1,5 @@
 import api, {API_URL} from "./index";
+import axios from "axios";
 
 class GithubService {
   static async getUsersData () {
@@ -6,15 +7,15 @@ class GithubService {
   }
 
   static async searchUsers (username = '') {
-    return await api.get(`${API_URL}/search/users?q=${username}`);
+    return await axios.get(`${API_URL}/search/users?q=${username}`);
   }
 
   static async getUserByName (username) {
-    return await api.get(`${API_URL}/users/${username}`)
+    return await axios.get(`${API_URL}/users/${username}`)
   }
 
   static async getUserRepos (username, page = 1) {
-    return await api.get(`${API_URL}/users/${username}/repos?type=owner&per_page=5&page=${page}`)
+    return await axios.get(`${API_URL}/users/${username}/repos?type=owner&per_page=5&page=${page}`)
   }
 }
 
