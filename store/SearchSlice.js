@@ -23,8 +23,11 @@ const SearchSlice = createSlice({
     setSearchString: (state, action) => {
       state.searchString = action.payload;
     },
-    resetList: (state) => {
+    resetSearch: (state) => {
       state.list = [];
+      state.searchString = '';
+      state.isLoading = false;
+      state.isError = false;
     }
   },
   extraReducers: {
@@ -39,6 +42,6 @@ const SearchSlice = createSlice({
 
 });
 
-export const {setSearchString, resetList} = SearchSlice.actions;
+export const {setSearchString, resetSearch} = SearchSlice.actions;
 
 export default SearchSlice.reducer;

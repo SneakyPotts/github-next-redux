@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import debounce from 'lodash.debounce';
-import {resetList, searchUsers, setSearchString} from "../store/SearchSlice";
+import {resetSearch, searchUsers, setSearchString} from "../store/SearchSlice";
 
 const SearchInput = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const SearchInput = () => {
   const handleSearch = debounce(setString, 300);
 
   const handleReset = () => {
-    dispatch(resetList());
+    dispatch(resetSearch());
     input.current.value = '';
   };
 
@@ -27,7 +27,7 @@ const SearchInput = () => {
       dispatch(searchUsers(searchString));
       input.current.value = searchString;
     } else {
-      dispatch(resetList());
+      dispatch(resetSearch());
     }
   }, [searchString]);
 
